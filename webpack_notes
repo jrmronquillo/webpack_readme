@@ -13,9 +13,99 @@
         }
     };
 
-##
 
 
+## react boiler plate
+	mkdir react_boiler_plate
+	touch public/index.html src/app.js
+
+### index.html example
+	<!DOCTYPE html>
+	<html>
+  		<head>
+		    <meta charset="UTF-8" />
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		    <title>React App</title>
+  		</head>
+
+  		<body>
+    		<div id="root"></div>
+
+    		<script src="./bundle.js"></script>
+  		</body>
+	</html>
+
+### initialize
+	npm init -y
+
+### webpack.config.js update
+	const path = require('path');
+
+	module.exports = {
+	  entry: './src/app.js',
+	  output: {
+	    path: path.join(__dirname, 'public'),
+	    filename: 'bundle.js'
+	  }
+	};
+
+### package.json update
+	
+	"scripts": {
+    	"start": "webpack --mode=development",
+    	"build": "webpack --mode=production"
+  	}
+
+### install react
+
+	npm install react react-dom
+
+
+### src/app.js boiler plate
+
+	import React from 'react';
+	import ReactDOM from 'react-dom';
+
+	const template = React.createElement('p', {}, 'Hello from react');
+
+	ReactDOM.render(template, document.getElementById('root'));
+
+### start 
+	npm start
+
+### open index.html in browser
+
+## install babel
+===================
+
+	npm install @babel/core @babel/preset-env @babel/preset-react babel-loader --save-dev
+
+### /.babelrc
+
+	{
+  	"presets": ["@babel/preset-env", "@babel/preset-react"]
+	}	
+
+### webpack.config.js update
+	const path = require('path');
+
+	module.exports = {
+	  entry: './src/app.js',
+	  output: {
+	    path: path.join(__dirname, 'public'),
+	    filename: 'bundle.js'
+	  },
+	  module: {
+	    rules: [
+	      {
+	        test: /\.js$/,
+	        exclude: /node_modules/,
+	        loader: 'babel-loader'
+	      }
+	    ]
+	  }
+	
 
 
 
