@@ -1,0 +1,25 @@
+# Webpack Notes
+===============
+
+## webpack.config.js
+### telling webpack how to work
+    const path = require('path');
+
+    module.exports = {
+        entry: './src/app.js', // relative path
+    output: {
+        path: path.join(__dirname, 'public'), // absolute path
+        filename: 'bundle.js' // file name
+        }
+    };
+
+##
+
+
+
+
+
+
+###### Resources
+===============
+https://dev.to/iamismile/how-to-setup-webpack-and-babel-for-react-59ph
